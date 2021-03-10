@@ -13,18 +13,45 @@ $(document).ready(function(){
     });
     
     $(".one").click(function(){
-        onecards
+        getcard("one");
+    });
+    $(".two").click(function(){
+        getcard("two");
+    });
+    $(".three").click(function(){
+        getcard("three");
     });
 
-    newcard = Math.floor(Math.random()*10 + 4);  
-    // document.write('(7) : ' +cardNum+ '<br>');  
+   
+    //document.write('(호호) : ' +cardNum+ '<br>');
+    
 });
 
-var newcard;
+var allcard = [];
+var newnum;
 var cardNum;
-var mycards;
-var mycardnum;
-var repcard;
+var mycards = [];
+var mycardnum = 0;
+var repcard=[];
+var same=1;
+
+function getcard(sel){
+    let a = Math.floor(Math.random()*11 + 4);
+    let b = Math.floor(Math.random()*14 + 15);
+    let c = Math.floor(Math.random()*13 + 29);
+
+    newnum = sel === "one" ? a : sel === "two" ? b : c;
+    if( allcard[newnum]==null){
+        repcard[newnum] = 1;
+        mycards[mycardnum]=newnum;
+        mycardnum++;
+        same=0;
+        console.log('(호호) : ' +newnum+ '<br>');
+    } else getcard(nan);
+}
+
+
+
 
 
 
