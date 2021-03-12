@@ -24,9 +24,15 @@ $(document).ready(function(){
     $(".sortBtn").click(function(){
         ssort(mycards);
     });
-   
+    
+    
     //document.write('(호호) : ' +cardNum+ '<br>');
     
+});
+
+document.addEventListener('contextmenu',(e)=>{
+    e.preventDefault();
+    console.log(e);
 });
 
 var allcard = [];
