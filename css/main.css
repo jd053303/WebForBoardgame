@@ -78,9 +78,9 @@ p{
     transition: .2s; 
     width: 140px;
 }
-.delho:nth-child(1):hover > img{ transform: translate( 20px, 10px); }
-.delho:nth-child(2):hover > img{ transform: translate( 20px, 0); }
-.delho:nth-child(3):hover > img{ transform: translate( 20px, -10px); }
+.delhov:nth-child(1):hover > img{ transform: translate( 20px, 10px); }
+.delhov:nth-child(2):hover > img{ transform: translate( 20px, 0); }
+.delhov:nth-child(3):hover > img{ transform: translate( 20px, -10px); }
 
 .delhov:nth-child(1) > img{
     transform: translate(0, 10px);   

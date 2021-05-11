@@ -14,7 +14,6 @@ $(document).ready(function(){
     
     $(".one").click(function(){
         getcard("one");
-        
     });
     $(".two").click(function(){
         getcard("two");
@@ -26,24 +25,40 @@ $(document).ready(function(){
         ssort(mycards);
     });
     
-    
     //document.write('(호호) : ' +cardNum+ '<br>');
-    
 });
+
+//남은 카드 개수(오른쪽 클릭)
+var oneany = 11;
+var twoany = 14;
+var threeany = 13;
+var right=0;
 
 document.addEventListener('contextmenu',(e)=>{
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
+    right === 1 ? right=0 : right=1;
+    any();
 });
+function any(){
+    if(right==1){
+        $('.onere').text(oneany);
+        $('.twore').text(twoany);
+        $('.threere').text(threeany);
+    } else {
+        $('.onere').text("4-14");
+        $('.twore').text("15-28");
+        $('.threere').text("29-41");
+    }
+}
 
+//카드뽑기
 var allcard = [];
 var newnum;
-var remnum;
 var mycards = [];
 var mycardnum = 0;
 var repcard=[];
 
-//카드뽑기
 function getcard(sel){
     let a = Math.floor(Math.random()*11 + 4);
     let b = Math.floor(Math.random()*14 + 15);
@@ -53,38 +68,36 @@ function getcard(sel){
 
     if(allcard[newnum]==null){
         allcard[newnum] = 1;
-        delcards();
         mycards[mycardnum]=newnum;
-
+        delcards();
         showcard(newnum);
-
         mycardnum++;
-    } else getcard(sel);
+
+        newnum < 15 ? oneany-- : (newnum>14&&newnum<29) ? twoany-- : threeany--;
+        any();
+    }else getcard(sel);
 }
 
+//카드다뽑았다
 var onedone = document.querySelector('.one')
 var twodone = document.querySelector('.two')
 var threedone = document.querySelector('.three')
-//카드다뽑았다
+var cardsdone;
+
 function delcards(){
-    
     for(let i=4; i<=41; i++){
         if(i==4||i==15||i==29){
-            var cardsdone=1;
+            cardsdone=1;
         }
         if( allcard[i]!=null){ 
-            if((i==14||i==28||i==41)&& cardsdone==1){
-                let wh = i === 14 ? "onedone" : i === 28 ? "twodone" : "threedone";
+            if(allcard[i]!=null&&(i==14||i==28||i==41)&& cardsdone==1){
+                let wh = i === 14 ? onedone : i === 28 ? twodone : threedone;
                 wh.style.cssText  = `transform: translateX(-50px); transition: 0.3s;`
                 wh.classList.remove('delhov');
-                wh.classList.remove('delho');
             }
         }else cardsdone=0;
     }
-    
 }
-
-
 
 //카드서랍
 var drawer = document.querySelector('.drawer');
@@ -107,18 +120,5 @@ function ssort(mycards){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 // var userNum = document.querySelector('input[name="num"]').value;

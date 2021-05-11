@@ -65,3 +65,16 @@
     </form>        
 </body>
 </html>
+for(let i=4; i<=14; i++){
+    if(i==4||i==15||i==29){
+        var cardsdone=1;
+    }
+    if( allcard[i]!=null){ 
+        if((i==14||i==28||i==41)&& cardsdone==1){
+            onedone.style.cssText  = `transform: translateX(-50px); 
+            transition: 0.3s;`
+            onedone.classList.remove('delhov');
+            onedone.classList.remove('delho');
+        }
+    }else cardsdone=0;
+}
