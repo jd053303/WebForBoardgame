@@ -14,6 +14,7 @@ $(document).ready(function(){
     
     $(".one").click(function(){
         getcard("one");
+        
     });
     $(".two").click(function(){
         getcard("two");
@@ -24,15 +25,20 @@ $(document).ready(function(){
     $(".sortBtn").click(function(){
         ssort(mycards);
     });
-   
+    
+    
     //document.write('(호호) : ' +cardNum+ '<br>');
     
 });
 
-var allcard = [];
+document.addEventListener('contextmenu',(e)=>{
+    e.preventDefault();
+    console.log(e);
+});
 
+var allcard = [];
 var newnum;
-var cardNum;
+var remnum;
 var mycards = [];
 var mycardnum = 0;
 var repcard=[];
@@ -59,45 +65,23 @@ function getcard(sel){
 var onedone = document.querySelector('.one')
 var twodone = document.querySelector('.two')
 var threedone = document.querySelector('.three')
-var  ffsu= document.querySelector('.fsu')
-var  sssu= document.querySelector('.ssu')
-var  ttsu= document.querySelector('.tsu').innerHTML="i"
-
 //카드다뽑았다
 function delcards(){
-    var cardsdone=1;
-    for(let i=4; i<=14; i++){
+    
+    for(let i=4; i<=41; i++){
+        if(i==4||i==15||i==29){
+            var cardsdone=1;
+        }
         if( allcard[i]!=null){ 
-            if(i==14 && cardsdone==1){
-                onedone.style.cssText  = `transform: translateX(-50px); 
-                transition: 0.3s;`
-                onedone.classList.remove('delhov');
-                onedone.classList.remove('delho');
+            if((i==14||i==28||i==41)&& cardsdone==1){
+                let wh = i === 14 ? "onedone" : i === 28 ? "twodone" : "threedone";
+                wh.style.cssText  = `transform: translateX(-50px); transition: 0.3s;`
+                wh.classList.remove('delhov');
+                wh.classList.remove('delho');
             }
         }else cardsdone=0;
     }
-    cardsdone=1;
-    for(let i=15; i<=28; i++){
-        if( allcard[i]!=null){ 
-            if(i==28 && cardsdone==1){
-                twodone.style.cssText  = `transform: translateX(-50px); 
-                transition: 0.3s;`
-                twodone.classList.remove('delhov');
-                twodone.classList.remove('delho');
-            }
-        }else cardsdone=0;
-    }
-    cardsdone=1;
-    for(let i=29; i<=41; i++){
-        if( allcard[i]!=null){ 
-            if(i==41 && cardsdone==1){
-                threedone.style.cssText  = `transform: translateX(-50px); 
-                transition: 0.3s;`
-                threedone.classList.remove('delhov');
-                threedone.classList.remove('delho');
-            }
-        }else cardsdone=0;
-    }
+    
 }
 
 

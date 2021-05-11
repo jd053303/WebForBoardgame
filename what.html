@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+    textarea{
+        width:500px;
+        height:400px;
+        margin:30px;
+    }
+</style>
+<script>
+    function init(){
+        var txt1 = window.document.form1.txt1;
+        
+        txt1.onmouseover = function(){
+            /* txt1.value="mouseover\r\n"+txt1.value;  */
+            /* window.document.body.bgColor="white"; */
+        };
+        txt1.onmouseout= function(){
+            /* txt1.value="mouseout\r\n"+txt1.value; */
+        };
+        txt1.onmousedown=function(){    
+            /* txt1.value=event.x + ","+event.y; */
+            /* txt1.value=event.clientX + ","+event.clientY; */
+            /* txt1.value=event.screenX + ","+event.screenY; */
+            /* txt1.value=event.offsetX + ","+event.offsetY; */
+        };
+        txt1.onmouseup=function(){
+            /* txt1.value="mouseup\r\n"+txt1.value; */ 
+        };
+        txt1.onmousemove = function(){
+            /* txt1.value="mousemove\r\n"+txt1.value; */
+            txt1.value=event.clientX+":"+event.clientY+"\r\n"+txt1.value;
+            
+            /* window.document.form1.txt2.size=event.clientX/2; */
+            
+            if(event.clientX %3==0){
+                window.document.body.bgColor="yellow";
+            }else if(event.clientX %3==1){
+                window.document.body.bgColor="red";
+            }else if(event.clientX %3==2){
+                window.document.body.bgColor="green";
+            }
+            
+        };
+        
+    }//init;
+    function test(){
+        alert("테스트");
+    }
+</script>
+<title></title>
+<link rel="stylesheet" href="/WebClientTest/css/css/basic.css">
+</head>
+<body onload="init();">    
+    <!-- 동적으로 이벤트 -->
+    
+    <form name ="form1">
+        <textarea name="txt1" id="txt1"></textarea>
+        <input type="button" name="btn1" value="버튼1"/>
+        <br />
+       
+    <input type="text" name="txt2" />
+    </form>        
+</body>
+</html>
